@@ -24,6 +24,7 @@
     margin: 10px 0;
     border-radius: 5px;
     transition: background-color 0.3s ease;
+    list-style: none;
   }
   
   .movie-list li:hover {
