@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import MovieList from './components/MovieList';
-import AddMovieForm from './components/AddMovieForm';  
+import MovieList from './components/MovieList/MovieList';
+import AddMovieForm from './components/AddMovieForm/AddMovieForm';  
 import styles from './page.module.css';
 
 interface Movie {

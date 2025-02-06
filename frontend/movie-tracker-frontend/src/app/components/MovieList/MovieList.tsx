@@ -1,5 +1,5 @@
-// src/components/MovieList.tsx
 import React from 'react';
+import styles from './MovieList.module.css';
 
 interface Movie {
   id: number;
@@ -14,7 +14,7 @@ interface MovieListProps {
 
 const MovieList: React.FC<MovieListProps> = ({ movies }) => {
   return (
-    <div>
+    <div className={styles['movie-list']}>
       <h2>Movie List</h2>
       <ul>
         {movies.map(movie => (
