@@ -18,7 +18,6 @@ public class MovieController {
 
     @PostMapping
     public ResponseEntity<Movie> addMovies(@RequestBody Movie movie) {
-        System.out.println("Recebido: " + movie.getWatchedDate());
         Movie savedMovie = movieService.saveMovie(movie);
         return ResponseEntity.status(HttpStatus.CREATED).body(savedMovie);
     }
@@ -27,6 +26,12 @@ public class MovieController {
     public ResponseEntity<List<Movie>> listMovies() {
         List<Movie> movies = movieService.listMovies();
         return ResponseEntity.ok(movies);
+    }
+
+    @PostMapping("/batch")
+    public ResponseEntity<List<Movie>> addMoviesBatch(@RequestBody List<Movie> movies) {
+        List<Movie> savedMovies = movieService.saveMoviesBatch(movies);
+        return ResponseEntity.status(HttpStatus.CREATED).body(savedMovies);
     }
 
 }

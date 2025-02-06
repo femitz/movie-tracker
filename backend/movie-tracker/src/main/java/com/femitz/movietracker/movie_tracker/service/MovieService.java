@@ -20,4 +20,8 @@ public class MovieService {
         return movieRepository.findAll();
     }
 
+    public List<Movie> saveMoviesBatch(List<Movie> movies) {
+        return movieRepository.saveAll(movies);
+    }
+
 }
