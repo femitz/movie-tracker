@@ -20,13 +20,13 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
     <div className={styles['movie-list']}>
       <h2>Movie List</h2>
       <List
-        height={400} // Altura da lista
-        itemCount={movies.length} // Quantidade de itens
-        itemSize={50} // Altura de cada item
+        height={400} 
+        itemCount={movies.length} 
+        itemSize={50} 
         width="100%"
       >
         {/* @ts-ignore */}
-        {({ index, style }: ListChildComponentProps) => { // Tipagem correta
+        {({ index, style }: ListChildComponentProps) => { 
           const movie = movies[index];
           return (
             <div style={style} key={movie.id}>
