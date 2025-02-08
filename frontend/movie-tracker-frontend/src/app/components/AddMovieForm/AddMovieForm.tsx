@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import styles from './AddMovieForm.module.css'; // Importando o CSS
+import styles from "./AddMovieForm.module.css";
+import { useReward } from "react-rewards";
 
 interface AddMovieFormProps {
   onAddMovie: (movie: {
@@ -14,6 +15,8 @@ const AddMovieForm: React.FC<AddMovieFormProps> = ({ onAddMovie }) => {
   const [genre, setGenre] = useState("");
   const [watched_date, setWatched_date] = useState("");
 
+  const { reward, isAnimating } = useReward('rewardId', 'confetti')
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (title && genre && watched_date) {
@@ -21,6 +24,7 @@ const AddMovieForm: React.FC<AddMovieFormProps> = ({ onAddMovie }) => {
       setTitle("");
       setGenre("");
       setWatched_date("");
+      reward()
     } else {
       alert("Please fill in all fields.");
     }
@@ -65,7 +69,10 @@ const AddMovieForm: React.FC<AddMovieFormProps> = ({ onAddMovie }) => {
         />
       </div>
 
-      <button className={styles.button} type="submit">Add Movie</button>
+      <button className={styles.button} type="submit" disabled={isAnimating}>
+        Add Movie
+        <span id='rewardId' />
+      </button>
     </form>
   );
 };

@@ -13,6 +13,7 @@
     "next": "15.1.6",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "react-rewards": "^2.1.0",
     "react-window": "^1.8.11"
   },
   "devDependencies": {
