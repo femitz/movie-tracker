@@ -1,8 +1,8 @@
 .movie-list {
     font-family: Arial, sans-serif;
     margin: 20px;
-    background-color: #181818; /* Fundo escuro */
-    color: #e0e0e0; /* Texto claro */
+    background-color: #181818; 
+    color: #e0e0e0; 
     border-radius: 10px;
     padding: 20px;
   }
@@ -10,7 +10,7 @@
   .movie-list h2 {
     font-size: 1.5rem;
     margin-bottom: 15px;
-    color: #ffffff; /* Título claro */
+    color: #ffffff; 
   }
   
   .movie-list ul {
@@ -19,7 +19,7 @@
   }
   
   .movie-list li {
-    background-color: #242424; /* Fundo para cada item */
+    background-color: #242424; 
     padding: 12px;
     margin: 10px 0;
     border-radius: 5px;
@@ -28,10 +28,13 @@
   }
   
   .movie-list li:hover {
-    background-color: #333; /* Cor de hover para melhorar a interação */
+    background-color: #333; 
   }
   
   .movie-list li strong {
-    color: #ffcc00; /* Cor dourada para o título do filme */
-  }
-  
+    background-image: linear-gradient(to right, #007bff, #6f42c1); 
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent; 
+    font-weight: bold; 
+}

@@ -1,6 +1,6 @@
 .movie-form {
-  background-color: #181818; /* Fundo escuro */
-  color: #e0e0e0; /* Texto claro */
+  background-color: #181818; 
+  color: #e0e0e0; 
   padding: 20px;
   border-radius: 10px;
   width: 300px;
@@ -9,7 +9,7 @@
 
 .movieFormH2 {
   text-align: center;
-  color: #ffffff; /* Cor do título */
+  color: #ffffff; 
   margin-bottom: 20px;
   font-size: 36px;
 }
@@ -22,7 +22,7 @@
   display: block;
   font-size: 1.5rem;
   margin-bottom: 5px;
-  color: #d0d0d0; /* Cor clara para os rótulos */
+  color: #d0d0d0; 
 }
 
 .placeholderMovieForm {
@@ -30,22 +30,22 @@
   padding: 10px;
   border-radius: 5px;
   border: 1px solid #444;
-  background-color: #333; /* Fundo mais escuro para os inputs */
-  color: #e0e0e0; /* Texto claro dentro do input */
+  background-color: #333; 
+  color: #e0e0e0; 
   font-size: 1rem;
   margin-top: 5px;
 }
 
 .placeholderMovieForm:focus {
   outline: none;
-  border-color: #ffcc00; /* Destaque dourado quando em foco */
+  border-color: #007bff; 
 }
 
 .button {
   width: 100%;
   padding: 10px;
-  background-color: #ffcc00; /* Cor de fundo dourada */
-  color: #181818; /* Texto escuro */
+  background-image: linear-gradient(to right, #007bff, #6f42c1); 
+  color: #ffffff; 
   border: none;
   border-radius: 5px;
   cursor: pointer;
@@ -54,5 +54,11 @@
 }
 
 .button:hover {
-  background-color: #e0b800; /* Efeito hover para o botão */
+  box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.3); 
+}
+
+.button:disabled {
+  background-image: linear-gradient(to right, #888, #aaa); 
+  cursor: default;
+  color: #ddd;
 }
