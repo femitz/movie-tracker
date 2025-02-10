@@ -31,7 +31,7 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
         itemSize={50} 
         width="100%"
       >
-        {/* @ts-ignore */}
+        {/* @ts-expect-error ListChildComponentProps: provavelmente erro de tipagem?*/}
         {({ index, style }: ListChildComponentProps) => { 
           const movie = movies[index];
           return (

@@ -5,7 +5,6 @@ import axios from "axios";
 import MovieList from "./components/MovieList/MovieList";
 import AddMovieForm from "./components/AddMovieForm/AddMovieForm";
 import styles from "./page.module.css";
-import { time } from "console";
 
 interface Movie {
   id: number;
