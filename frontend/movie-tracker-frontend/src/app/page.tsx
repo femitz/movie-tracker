@@ -1,7 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React, { useEffect } from "react";
 import MovieList from "./components/MovieList/MovieList";
 import AddMovieForm from "./components/AddMovieForm/AddMovieForm";
 import styles from "./page.module.css";
