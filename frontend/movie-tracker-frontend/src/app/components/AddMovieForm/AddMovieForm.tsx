@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./AddMovieForm.module.css";
 import { useReward } from "react-rewards";
+import { useGenres } from "../../hooks/useGenres"; // ajuste o caminho se necessário
+
 
 interface AddMovieFormProps {
   onAddMovie: (movie: {
@@ -12,17 +14,19 @@ interface AddMovieFormProps {
 
 const AddMovieForm: React.FC<AddMovieFormProps> = ({ onAddMovie }) => {
   const [title, setTitle] = useState("");
-  const [genre, setGenre] = useState("");
+  const [genre, setGenre] = useState<string[]>([]);
   const [watched_date, setWatched_date] = useState("");
+  const { genre: genresList } = useGenres();
+
 
   const { reward, isAnimating } = useReward('rewardId', 'confetti')
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     if (title && genre && watched_date) {
-      onAddMovie({ title, genre, watched_date });
+      onAddMovie({ title, genre: genre.join(', '), watched_date });
       setTitle("");
-      setGenre("");
+      setGenre([]);
       setWatched_date("");
       reward()
     } else {
@@ -47,15 +51,26 @@ const AddMovieForm: React.FC<AddMovieFormProps> = ({ onAddMovie }) => {
       </div>
 
       <div className={styles.divMovieForm}>
-        <label className={styles.labelMovieForm}>Genre:</label>
-        <input
-          className={styles.placeholderMovieForm}
-          type="text"
-          value={genre}
-          onChange={(e) => setGenre(e.target.value)}
-          placeholder="Enter movie genre"
-          required
-        />
+        <div className={styles.genreCheckboxGroup}>
+          {genresList.map((g) => (
+              <label key={g.id} className={styles.genreCheckboxLabel}>
+                <input
+                  type="checkbox"
+                  className={styles.genreCheckboxInput}
+                  value={g.name}
+                  checked={genre.includes(g.name)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setGenre([...genre, g.name]);
+                    } else {
+                      setGenre(genre.filter(item => item !== g.name));
+                    }
+                  }}
+                />
+                {g.name}
+              </label>
+            ))}
+        </div>
       </div>
 
       <div className={styles.divMovieForm}>
