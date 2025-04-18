@@ -67,6 +67,15 @@ export default function Home() {
     }
   };
 
+  const removeById = async (id: number) => {
+    try {
+      await axios.delete(`http://localhost:8080/api/movies/${id}`);
+      setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
+    } catch (error) {
+      console.error("Error removing movie: ", error);
+    }
+  };
+
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
       const circle = document.querySelector(`.${styles["cursor-circle"]}`) as HTMLElement;
@@ -89,7 +98,7 @@ export default function Home() {
       <main className={styles.main}>
         <h1 className={styles.header}>🍿 Movie Tracker</h1>
         <AddMovieForm onAddMovie={handleAddMovie} />
-        <MovieList movies={movies} />
+        <MovieList movies={movies} removeById={removeById}/>
       </main>
     </div>
   );
