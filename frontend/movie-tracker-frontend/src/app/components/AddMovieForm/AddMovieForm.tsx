@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styles from "./AddMovieForm.module.css";
 import { useReward } from "react-rewards";
+import { useGenres } from "../../hooks/useGenres"; // ajuste o caminho se necessário
+
 
 interface AddMovieFormProps {
   onAddMovie: (movie: {
@@ -14,31 +16,8 @@ const AddMovieForm: React.FC<AddMovieFormProps> = ({ onAddMovie }) => {
   const [title, setTitle] = useState("");
   const [genre, setGenre] = useState<string[]>([]);
   const [watched_date, setWatched_date] = useState("");
-  const genresList = [
-    "Action",
-    "Adventure",
-    "Animation",
-    "Biography",
-    "Comedy",
-    "Crime",
-    "Documentary",
-    "Drama",
-    "Family",
-    "Fantasy",
-    "History",
-    "Horror",
-    "Musical",
-    "Mystery",
-    "Noir",
-    "Romance",
-    "Sci-Fi",
-    "Short",
-    "Sport",
-    "Thriller",
-    "War",
-    "Western",
-    "Reality-TV"
-  ];
+  const { genre: genresList } = useGenres();
+
 
   const { reward, isAnimating } = useReward('rewardId', 'confetti')
 
@@ -74,23 +53,23 @@ const AddMovieForm: React.FC<AddMovieFormProps> = ({ onAddMovie }) => {
       <div className={styles.divMovieForm}>
         <div className={styles.genreCheckboxGroup}>
           {genresList.map((g) => (
-            <label key={g} className={styles.genreCheckboxLabel}>
-              <input
-                type="checkbox"
-                className={styles.genreCheckboxInput}
-                value={g}
-                checked={genre.includes(g)}
-                onChange={(e) => {
-                  if (e.target.checked) {
-                    setGenre([...genre, g]);
-                  } else {
-                    setGenre(genre.filter(item => item !== g));
-                  }
-                }}
-              />
-              {g}
-            </label>
-          ))}
+              <label key={g.id} className={styles.genreCheckboxLabel}>
+                <input
+                  type="checkbox"
+                  className={styles.genreCheckboxInput}
+                  value={g.name}
+                  checked={genre.includes(g.name)}
+                  onChange={(e) => {
+                    if (e.target.checked) {
+                      setGenre([...genre, g.name]);
+                    } else {
+                      setGenre(genre.filter(item => item !== g.name));
+                    }
+                  }}
+                />
+                {g.name}
+              </label>
+            ))}
         </div>
       </div>
 
