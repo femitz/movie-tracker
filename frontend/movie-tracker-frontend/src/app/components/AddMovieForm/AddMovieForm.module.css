@@ -62,3 +62,33 @@
   cursor: default;
   color: #ddd;
 }
+
+.genreCheckboxGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 5px;
+}
+
+.genreCheckboxLabel {
+  display: flex;
+  align-items: center;
+  background: #232323;
+  border-radius: 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+  transition: background 0.2s;
+  font-size: 1rem;
+  color: #e0e0e0;
+}
+
+.genreCheckboxLabel:hover {
+  background: #333;
+}
+
+.genreCheckboxInput {
+  accent-color: #6f42c1;
+  margin-right: 6px;
+  width: 18px;
+  height: 18px;
+}
