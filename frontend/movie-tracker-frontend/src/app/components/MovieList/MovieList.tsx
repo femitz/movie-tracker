@@ -3,6 +3,7 @@ import styles from './MovieList.module.css';
 import { FixedSizeList as List } from 'react-window';
 import { ListChildComponentProps } from 'react-window';
 import moment from 'moment';
+import { MdDelete } from "react-icons/md";
 
 interface Movie {
   id: number;
@@ -13,13 +14,20 @@ interface Movie {
 
 interface MovieListProps {
   movies: Movie[];
+  removeById: (id: number) => void; 
 }
 
-const MovieList: React.FC<MovieListProps> = ({ movies }) => {
+const MovieList: React.FC<MovieListProps> = ({ movies, removeById }) => {
 
   const formatDate = (dateString: string) => {
     const date = moment(dateString);
     return date.format('DD/MM/YYYY');
+  };
+
+  const removeItem = async (id: number) => {
+    const confirmed = window.confirm("Tem certeza que deseja remover este filme?");
+    if (!confirmed) return;
+    removeById(id)
   };
 
   return (
@@ -37,7 +45,16 @@ const MovieList: React.FC<MovieListProps> = ({ movies }) => {
           return (
             <div style={style} key={movie.id}>
               <li className={styles['movie-list li']}>
-                <strong>{movie.title}</strong> | {movie.genre} | {formatDate(movie.watched_date)}
+                 <span>
+                    <strong>{movie.title}</strong> | {movie.genre} | {formatDate(movie.watched_date)}
+                  </span>
+                <button
+                  className={styles['remove-button']}
+                  onClick={() => removeItem(movie.id)}
+                  style={{ marginLeft: '1rem' }}
+                >
+                  <MdDelete color="#d32f2f" size={20} title='delete'/>
+                </button>
               </li>
             </div>
           );
