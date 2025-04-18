@@ -5,76 +5,11 @@ import axios from "axios";
 import MovieList from "./components/MovieList/MovieList";
 import AddMovieForm from "./components/AddMovieForm/AddMovieForm";
 import styles from "./page.module.css";
-
-interface Movie {
-  id: number;
-  title: string;
-  genre: string;
-  watched_date: string;
-}
+import { useMovies } from "./hooks/useMovies";
 
 export default function Home() {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const { movies, addMovie, removeById } = useMovies();
 
-  useEffect(() => {
-    const fetchMovies = async () => {
-      try {
-        const response = await axios.get("http://localhost:8080/api/movies");
-        const sortedMovies = response.data.sort((a: Movie, b: Movie) => {
-          const dateA = new Date(a.watched_date);
-          const dateB = new Date(b.watched_date);
-
-          if (dateB.getTime() === dateA.getTime()) {
-            return a.id - b.id; // Ordena por ID se as datas forem iguais
-          }
-
-          return dateB.getTime() - dateA.getTime(); // Ordena por data (mais recente primeiro)
-        });
-        setMovies(sortedMovies);
-      } catch (error) {
-        console.error("Error fetching data: ", error);
-      }
-    };
-
-    fetchMovies();
-  }, []);
-
-  const handleAddMovie = async (movie: {
-    title: string;
-    genre: string;
-    watched_date: string;
-  }) => {
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/api/movies",
-        movie
-      );
-      const updatedMovies = [...movies, response.data].sort(
-        (a: Movie, b: Movie) => {
-          const dateA = new Date(a.watched_date);
-          const dateB = new Date(b.watched_date);
-
-          if (dateB.getTime() === dateA.getTime()) {
-            return a.id - b.id;
-          }
-
-          return dateB.getTime() - dateA.getTime();
-        }
-      );
-      setMovies(updatedMovies);
-    } catch (error) {
-      console.error("Error adding movie: ", error);
-    }
-  };
-
-  const removeById = async (id: number) => {
-    try {
-      await axios.delete(`http://localhost:8080/api/movies/${id}`);
-      setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
-    } catch (error) {
-      console.error("Error removing movie: ", error);
-    }
-  };
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
@@ -97,7 +32,7 @@ export default function Home() {
       <div className={styles["cursor-circle"]}></div>
       <main className={styles.main}>
         <h1 className={styles.header}>🍿 Movie Tracker</h1>
-        <AddMovieForm onAddMovie={handleAddMovie} />
+        <AddMovieForm onAddMovie={addMovie} />
         <MovieList movies={movies} removeById={removeById}/>
       </main>
     </div>
