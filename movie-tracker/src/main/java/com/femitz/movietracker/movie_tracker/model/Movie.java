@@ -25,21 +25,27 @@ public class Movie {
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate watchedDate;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
+
     public Movie() {
     }
 
-    public Movie(String title, String genre, LocalDate watchedDate) {
+    public Movie(String title, String genre, LocalDate watchedDate, User user) {
         this.title = title;
         this.genre = genre;
         this.watchedDate = watchedDate;
+        this.user = user;
     }
 
     // Construtor Completo (Incluindo ID - Útil para respostas e testes)
-    public Movie(Long id, String title, String genre, LocalDate watchedDate) {
+    public Movie(Long id, String title, String genre, LocalDate watchedDate, User user) {
         this.id = id;
         this.title = title;
         this.genre = genre;
         this.watchedDate = watchedDate;
+        this.user = user;
     }
 
     // Getters and Setters
@@ -74,5 +80,13 @@ public class Movie {
 
     public void setWatchedDate(LocalDate watchedDate) {
         this.watchedDate = watchedDate;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

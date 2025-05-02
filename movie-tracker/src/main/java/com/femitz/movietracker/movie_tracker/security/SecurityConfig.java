@@ -66,6 +66,8 @@ public class SecurityConfig {
             "Origin",
             "Access-Control-Request-Method",
             "Access-Control-Request-Headers",
+            "Access-Control-Allow-Origin",
+            "Access-Control-Allow-Credentials",
             "X-Requested-With"
         ));
         configuration.setExposedHeaders(Arrays.asList(

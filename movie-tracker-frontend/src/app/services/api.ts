@@ -5,6 +5,8 @@ const api = axios.create({
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
+        'Access-Control-Allow-Origin': 'http://localhost:3000',
+        'Access-Control-Allow-Credentials': 'true'
     },
     withCredentials: true
 });
@@ -16,7 +18,25 @@ api.interceptors.request.use((config) => {
         config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
+}, (error) => {
+    return Promise.reject(error);
 });
+
+// Interceptor para tratar erros de resposta
+api.interceptors.response.use(
+    (response) => response,
+    (error) => {
+        if (error.response?.status === 403) {
+            console.error('Erro de permissão:', error);
+            // Se o token estiver inválido, fazer logout
+            if (error.response?.data?.message?.includes('token')) {
+                auth.logout();
+                window.location.href = '/auth';
+            }
+        }
+        return Promise.reject(error);
+    }
+);
 
 // Serviços de autenticação
 export const auth = {
