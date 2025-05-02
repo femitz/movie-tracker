@@ -1,20 +1,19 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 export interface Genre {
   id: number;
   name: string;
 }
 
-
 export function useGenres() {
-    const URL = 'http://localhost:8080/api/genres'  
+    const URL = '/api/genres'  
     const [genre, setGenre] = useState<Genre[]>([]);
   
     useEffect(() => {
       const fetchGenre = async () => {
         try {
-          const response = await axios.get(URL);
+          const response = await api.get(URL);
           setGenre(response.data)
         } catch (error) {
           console.error("Error fetching data: ", error);

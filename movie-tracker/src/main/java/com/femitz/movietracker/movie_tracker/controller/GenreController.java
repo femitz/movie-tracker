@@ -1,7 +1,6 @@
 package com.femitz.movietracker.movie_tracker.controller;
 
 import com.femitz.movietracker.movie_tracker.model.Genre;
-import com.femitz.movietracker.movie_tracker.model.Movie;
 import com.femitz.movietracker.movie_tracker.service.GenreService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
