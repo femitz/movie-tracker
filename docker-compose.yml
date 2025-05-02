@@ -1,6 +1,6 @@
 services:
   frontend:
-    build: ./frontend/movie-tracker-frontend
+    build: ./movie-tracker-frontend
     ports:
       - "3000:3000"
     depends_on:
@@ -9,7 +9,7 @@ services:
       - app-network
 
   backend:
-    build: ./backend/movie-tracker
+    build: ./movie-tracker
     ports:
       - "8080:8080"
     environment:
