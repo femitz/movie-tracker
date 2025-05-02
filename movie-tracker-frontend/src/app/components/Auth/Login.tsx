@@ -23,7 +23,7 @@ export default function Login({ onSwitchToRegister }: LoginProps) {
 
         try {
             const data = await auth.login(email, password);
-            console.log('Login bem-sucedido:', data);
+            // console.log('Login bem-sucedido:', data);
             router.push('/movies');
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Ocorreu um erro durante o login');

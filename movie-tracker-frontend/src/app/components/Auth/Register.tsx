@@ -31,7 +31,7 @@ export default function Register({ onSwitchToLogin }: RegisterProps) {
 
         try {
             const data = await auth.register(name, email, password);
-            console.log('Registro bem-sucedido:', data);
+            // console.log('Registro bem-sucedido:', data);
             router.push('/movies');
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Ocorreu um erro durante o registro');

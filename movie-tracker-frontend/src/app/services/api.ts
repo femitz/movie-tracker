@@ -4,15 +4,18 @@ const api = axios.create({
     baseURL: 'http://localhost:8080',
     headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Access-Control-Allow-Origin': 'http://localhost:3000',
-        'Access-Control-Allow-Credentials': 'true'
+        'Accept': 'application/json'
     },
     withCredentials: true
 });
 
 // Interceptor para adicionar o token JWT
 api.interceptors.request.use((config) => {
+    // Não adiciona o token para rotas de autenticação
+    if (config.url?.startsWith('/api/auth/')) {
+        return config;
+    }
+
     const token = localStorage.getItem('token');
     if (token) {
         config.headers.Authorization = `Bearer ${token}`;
@@ -48,7 +51,9 @@ export const auth = {
             }
             return response.data;
         } catch (error: any) {
-            throw new Error(error.response?.data?.message || 'Falha no login. Por favor, verifique suas credenciais.');
+            const message = error.response?.data?.message || 'Falha no login. Por favor, verifique suas credenciais.';
+            console.error('Erro no login:', error);
+            throw new Error(message);
         }
     },
 
@@ -60,7 +65,9 @@ export const auth = {
             }
             return response.data;
         } catch (error: any) {
-            throw new Error(error.response?.data?.message || 'Falha no registro. Por favor, tente novamente.');
+            const message = error.response?.data?.message || 'Falha no registro. Por favor, tente novamente.';
+            console.error('Erro no registro:', error);
+            throw new Error(message);
         }
     },
 
