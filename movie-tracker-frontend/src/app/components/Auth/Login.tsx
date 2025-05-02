@@ -1,40 +1,34 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './Auth.module.css';
+import { auth } from '../../services/api';
 
 interface LoginProps {
     onSwitchToRegister: () => void;
 }
 
 export default function Login({ onSwitchToRegister }: LoginProps) {
+    const router = useRouter();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setError('');
+        setIsLoading(true);
 
         try {
-            // TODO: Implementar a chamada à API de login
-            const response = await fetch('/api/auth/login', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Falha no login. Por favor, verifique suas credenciais.');
-            }
-
-            const data = await response.json();
-            // TODO: Implementar o armazenamento do token e redirecionamento
+            const data = await auth.login(email, password);
             console.log('Login bem-sucedido:', data);
+            router.push('/movies');
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Ocorreu um erro durante o login');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -54,6 +48,7 @@ export default function Login({ onSwitchToRegister }: LoginProps) {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        disabled={isLoading}
                     />
                 </div>
 
@@ -68,13 +63,14 @@ export default function Login({ onSwitchToRegister }: LoginProps) {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        disabled={isLoading}
                     />
                 </div>
 
                 {error && <p className={styles.error}>{error}</p>}
 
-                <button type="submit" className={styles.button}>
-                    Entrar
+                <button type="submit" className={styles.button} disabled={isLoading}>
+                    {isLoading ? 'Entrando...' : 'Entrar'}
                 </button>
 
                 <p className={styles.switchText}>

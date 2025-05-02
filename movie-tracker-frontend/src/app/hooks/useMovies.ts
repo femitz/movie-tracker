@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
+import api from "../services/api";
 
 export interface Movie {
   id: number;
@@ -18,13 +18,13 @@ function sortMovies(movies: Movie[]) {
 }
 
 export function useMovies() {
-  const URL = 'http://localhost:8080/api/movies'  
+  const URL = '/api/movies'  
   const [movies, setMovies] = useState<Movie[]>([]);
 
   useEffect(() => {
     const fetchMovies = async () => {
       try {
-        const response = await axios.get(URL);
+        const response = await api.get(URL);
         setMovies(sortMovies(response.data));
       } catch (error) {
         console.error("Error fetching data: ", error);
@@ -35,7 +35,7 @@ export function useMovies() {
 
   const addMovie = async (movie: Omit<Movie, "id">) => {
     try {
-      const response = await axios.post(URL, movie);
+      const response = await api.post(URL, movie);
       setMovies((prev) => sortMovies([...prev, response.data]));
     } catch (error) {
       console.error("Error adding movie: ", error);
@@ -44,7 +44,7 @@ export function useMovies() {
 
   const removeById = async (id: number) => {
     try {
-      await axios.delete(`${URL}/${id}`);
+      await api.delete(`${URL}/${id}`);
       setMovies((prev) => prev.filter((movie) => movie.id !== id));
     } catch (error) {
       console.error("Error removing movie: ", error);

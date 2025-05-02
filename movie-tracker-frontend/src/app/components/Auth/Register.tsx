@@ -1,48 +1,42 @@
 'use client';
 
 import { useState, FormEvent } from 'react';
+import { useRouter } from 'next/navigation';
 import styles from './Auth.module.css';
+import { auth } from '../../services/api';
 
 interface RegisterProps {
     onSwitchToLogin: () => void;
 }
 
 export default function Register({ onSwitchToLogin }: RegisterProps) {
+    const router = useRouter();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
         setError('');
+        setIsLoading(true);
 
         if (password !== confirmPassword) {
             setError('As senhas não coincidem');
+            setIsLoading(false);
             return;
         }
 
         try {
-            // TODO: Implementar a chamada à API de registro
-            const response = await fetch('/api/auth/register', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ name, email, password }),
-            });
-
-            if (!response.ok) {
-                throw new Error('Falha no registro. Por favor, tente novamente.');
-            }
-
-            const data = await response.json();
-            // TODO: Implementar o redirecionamento após registro
+            const data = await auth.register(name, email, password);
             console.log('Registro bem-sucedido:', data);
-            onSwitchToLogin(); 
+            router.push('/movies');
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Ocorreu um erro durante o registro');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -62,6 +56,7 @@ export default function Register({ onSwitchToLogin }: RegisterProps) {
                         value={name}
                         onChange={(e) => setName(e.target.value)}
                         required
+                        disabled={isLoading}
                     />
                 </div>
 
@@ -76,6 +71,7 @@ export default function Register({ onSwitchToLogin }: RegisterProps) {
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
                         required
+                        disabled={isLoading}
                     />
                 </div>
 
@@ -90,6 +86,7 @@ export default function Register({ onSwitchToLogin }: RegisterProps) {
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
                         required
+                        disabled={isLoading}
                     />
                 </div>
 
@@ -104,13 +101,14 @@ export default function Register({ onSwitchToLogin }: RegisterProps) {
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
                         required
+                        disabled={isLoading}
                     />
                 </div>
 
                 {error && <p className={styles.error}>{error}</p>}
 
-                <button type="submit" className={styles.button}>
-                    Registrar
+                <button type="submit" className={styles.button} disabled={isLoading}>
+                    {isLoading ? 'Registrando...' : 'Registrar'}
                 </button>
 
                 <p className={styles.switchText}>
