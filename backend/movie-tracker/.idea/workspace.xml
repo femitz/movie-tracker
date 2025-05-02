@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="645741e1-76ce-4bdf-b60f-32823f649c1f" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dockerfile" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2sdxb7xHVFSITabpOjU1IXV4ngs" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;JUnit.MovieControllerTest.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MovieControllerTest.testAddMovie.executor&quot;: &quot;Run&quot;,
+    &quot;JUnit.MovieTrackerApplicationTests.executor&quot;: &quot;Run&quot;,
+    &quot;Maven.movie-tracker [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.movie-tracker [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.movie-tracker [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.movie-tracker [test].executor&quot;: &quot;Run&quot;,
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;Spring Boot.MovieTrackerApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/mitz/Documents/Development/movie-tracker/backend/movie-tracker&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Spring Boot.MovieTrackerApplication">
+    <configuration name="MovieControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movie-tracker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.femitz.movietracker.movie_tracker.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.femitz.movietracker.movie_tracker.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.femitz.movietracker.movie_tracker.controller.MovieControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieTrackerApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="movie-tracker" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.femitz.movietracker.movie_tracker.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.femitz.movietracker.movie_tracker" />
+      <option name="MAIN_CLASS_NAME" value="com.femitz.movietracker.movie_tracker.MovieTrackerApplicationTests" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MovieTrackerApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="ACTIVE_PROFILES" value="dev" />
+      <module name="movie-tracker" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.femitz.movietracker.movie_tracker.MovieTrackerApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.MovieControllerTest" />
+      <item itemvalue="JUnit.MovieTrackerApplicationTests" />
+      <item itemvalue="Spring Boot.MovieTrackerApplication" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.MovieTrackerApplicationTests" />
+        <item itemvalue="JUnit.MovieControllerTest" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9f38398b9061-39b83d9b5494-intellij.indexing.shared.core-IU-241.18034.62" />
+        <option value="bundled-js-predefined-1d06a55b98c1-0b3e54e931b4-JavaScript-IU-241.18034.62" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="645741e1-76ce-4bdf-b60f-32823f649c1f" name="Changes" comment="" />
+      <created>1738799321992</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1738799321992</updated>
+      <workItem from="1738799323146" duration="4961000" />
+      <workItem from="1738805757084" duration="2389000" />
+      <workItem from="1738856436940" duration="1702000" />
+      <workItem from="1738981022366" duration="93000" />
+      <workItem from="1739022861633" duration="1746000" />
+      <workItem from="1739040201323" duration="1278000" />
+      <workItem from="1739049749014" duration="269000" />
+      <workItem from="1739072322402" duration="163000" />
+      <workItem from="1739156119168" duration="111000" />
+      <workItem from="1739157849890" duration="2514000" />
+      <workItem from="1739193494579" duration="4126000" />
+      <workItem from="1739199706344" duration="3427000" />
+      <workItem from="1741793696427" duration="3000" />
+      <workItem from="1741965710643" duration="2000" />
+      <workItem from="1743427906347" duration="5000" />
+      <workItem from="1743706770559" duration="67000" />
+      <workItem from="1743707646047" duration="48000" />
+      <workItem from="1744936001022" duration="2151000" />
+      <workItem from="1744986123503" duration="4252000" />
+      <workItem from="1746194173934" duration="1012000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/movie_tracker$MovieTrackerApplicationTests.ic" NAME="MovieTrackerApplicationTests Coverage Results" MODIFIED="1738802850081" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true">
+      <FILTER>com.femitz.movietracker.movie_tracker.*</FILTER>
+    </SUITE>
+  </component>
+</project>
