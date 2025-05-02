@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './Auth.module.css';
 import { auth } from '../../services/api';
+import { useReward } from "react-rewards";
 
 interface LoginProps {
     onSwitchToRegister: () => void;
@@ -15,6 +16,7 @@ export default function Login({ onSwitchToRegister }: LoginProps) {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const { reward, isAnimating } = useReward('rewardId', 'confetti')
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -23,8 +25,11 @@ export default function Login({ onSwitchToRegister }: LoginProps) {
 
         try {
             const data = await auth.login(email, password);
-            // console.log('Login bem-sucedido:', data);
-            router.push('/movies');
+            reward();
+            
+            setTimeout(() => {
+                router.push('/movies');
+            }, 1000);
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Ocorreu um erro durante o login');
         } finally {
@@ -71,6 +76,7 @@ export default function Login({ onSwitchToRegister }: LoginProps) {
 
                 <button type="submit" className={styles.button} disabled={isLoading}>
                     {isLoading ? 'Entrando...' : 'Entrar'}
+                    <span id='rewardId' />
                 </button>
 
                 <p className={styles.switchText}>

@@ -4,6 +4,7 @@ import { useState, FormEvent } from 'react';
 import { useRouter } from 'next/navigation';
 import styles from './Auth.module.css';
 import { auth } from '../../services/api';
+import { useReward } from "react-rewards";
 
 interface RegisterProps {
     onSwitchToLogin: () => void;
@@ -17,6 +18,8 @@ export default function Register({ onSwitchToLogin }: RegisterProps) {
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [isLoading, setIsLoading] = useState(false);
+    const { reward, isAnimating } = useReward('rewardId', 'confetti')
+
 
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
@@ -31,8 +34,11 @@ export default function Register({ onSwitchToLogin }: RegisterProps) {
 
         try {
             const data = await auth.register(name, email, password);
+            reward();
             // console.log('Registro bem-sucedido:', data);
-            router.push('/movies');
+            setTimeout(() => {
+                router.push('/movies');
+            }, 1000);
         } catch (err) {
             setError(err instanceof Error ? err.message : 'Ocorreu um erro durante o registro');
         } finally {
@@ -109,6 +115,7 @@ export default function Register({ onSwitchToLogin }: RegisterProps) {
 
                 <button type="submit" className={styles.button} disabled={isLoading}>
                     {isLoading ? 'Registrando...' : 'Registrar'}
+                    <span id='rewardId' />
                 </button>
 
                 <p className={styles.switchText}>
