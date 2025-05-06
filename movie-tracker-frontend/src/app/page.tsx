@@ -1,4 +1,4 @@
-import Auth from './components/Auth/Auth';
+import Auth from './auth/page';
 
 export default function Home() {
   return <Auth />;
